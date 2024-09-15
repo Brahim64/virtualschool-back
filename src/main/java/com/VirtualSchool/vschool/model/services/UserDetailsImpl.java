@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Getter
-@ToString
+
 public class UserDetailsImpl implements UserDetails {
 
     private static final long serialVersionUID = 1L;
@@ -85,4 +85,15 @@ public class UserDetailsImpl implements UserDetails {
     public boolean isEnabled() {
         return UserDetails.super.isEnabled();
     }
+
+    @Override
+    public String toString() {
+        return
+
+                        "\"id\": " + id + ", " +
+                        "\"username\": \"" + username + "\", " +
+                        "\"email\": \"" + email + "\", " +
+                        "\"authorities\": \"" + authorities.stream().toList().get(0) + "\"" ;
+    }
+
 }

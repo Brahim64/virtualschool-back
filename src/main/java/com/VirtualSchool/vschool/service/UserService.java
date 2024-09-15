@@ -40,9 +40,10 @@ public class UserService {
     private final TokenRepository tokenRepository;
 
     public void register(RegisterRequest registerRequest) {
+        System.out.println(registerRequest);
         User user = User.builder()
-                .firstName(registerRequest.getFirstName())
-                .lastName(registerRequest.getLastName())
+                .firstName(registerRequest.getFirstname())
+                .lastName(registerRequest.getLastname())
                 .username(registerRequest.getUsername())
                 .password(passwordEncoder.encode(registerRequest.getPassword()))
                 .phone(registerRequest.getPhone())
@@ -70,7 +71,9 @@ public class UserService {
         final String token =
                 jwtUtility.generateToken(userDetails);
 
-        return  token;
+        return  "{ \"token\": \"" + token + "\"," + userDetails + "}";
+        //return  "{ \"token\": \"" + token + "\",\"user\":  " + userDetails + "}";
+
     }
 
 }

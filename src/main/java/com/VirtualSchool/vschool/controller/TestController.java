@@ -12,7 +12,7 @@ public class TestController {
 
     @GetMapping(value = "/all")
     public String all() {
-        return "For All";
+        return "{ \"token\": 1}";
     }
     @GetMapping(value = "/test")
     public String test() {
@@ -20,9 +20,9 @@ public class TestController {
     }
 
     @GetMapping(value = "/student")
-    @PreAuthorize("hasRole('STUDENT')")
+    @PreAuthorize("hasRole('ROLE_STUDENT')")
     public String student() {
-        return "For Student";
+        return "{\"For\": \"Student\"}";
     }
     @GetMapping(value = "/admin")
     @PreAuthorize("hasRole('ADMIN')")
